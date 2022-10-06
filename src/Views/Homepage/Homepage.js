@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { getLocalWeather } from "../../apiCalls"
-import WeatherCard from "../WeatherCard/WeatherCard"
-import Header from "../Header/Header"
+import WeatherCard from "../../Components/WeatherCard/WeatherCard"
+import Header from "../../Components/Header/Header"
 
 const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])

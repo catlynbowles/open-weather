@@ -1,7 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { getCityCoordinate } from '../../apiCalls';
-import Homepage from '../Homepage/Homepage';
+import Homepage from '../../Views/Homepage/Homepage';
 
 function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
