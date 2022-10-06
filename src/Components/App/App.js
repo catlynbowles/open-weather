@@ -7,14 +7,14 @@ function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
 
   useEffect(() => {
-    Promise.all([getCityCoordinates('Miami', 'FL'), getCityCoordinates('Tampa', 'FL'), getCityCoordinates('New York', 'NY')])
+    Promise.all([getCityCoordinates('Las Vegas', 'Nevada'), getCityCoordinates('El Paso', 'Texas'), getCityCoordinates('Tucson', 'AZ')])
       .then(data => setCityCoordinates(data.flat(1)))
   }, [])
 
   return (
     <div className="App">
       Open Weathers
-      <WeatherGrid cityCoordinates={cityCoordinates}/>
+      <WeatherGrid cityCoordinates={cityCoordinates} />
     </div>
   );
 }
