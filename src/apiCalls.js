@@ -1,10 +1,17 @@
-export const getCityData = (city, state) => {
-  return fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
-    .then(response => {
-      if (response.ok) {
-        return response.json()
-      } else {
-        throw new Error('Error')
-      }
-    })
+export const getCityCoordinates = (city, state) => {
+  return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
+    .then(response => returnResponse(response))
+}
+
+export const getLocalWeather = (lat, lon) => {
+  return fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${process.env.REACT_APP_API_KEY}`)
+    .then(response => returnResponse(response))
+}
+
+const returnResponse = (response) => {
+  if (response.ok) {
+      return response.json()
+  } else {
+      throw new Error('Error')
+  }
 }
