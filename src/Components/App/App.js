@@ -1,18 +1,19 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { getCityData } from '../../apiCalls';
+import { getCityCoordinate } from '../../apiCalls';
+import Homepage from '../../Views/Homepage/Homepage';
 
 function App() {
-  const [data, setData] = useState([])
+  const [cityCoordinates, setCityCoordinates] = useState([])
 
   useEffect(() => {
-    Promise.all([getCityData('Miami', 'FL'), getCityData('Tampa', 'FL'), getCityData('New York', 'NY')])
-      .then(data => setData(data.flat(1)))
+    Promise.all([getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('El Paso', 'Texas'), getCityCoordinate('Tucson', 'AZ')])
+      .then(data => setCityCoordinates(data.flat(1)))
   }, [])
 
   return (
     <div className="App">
-      Open Weather
+      <Homepage cityCoordinates={cityCoordinates}/>
     </div>
   );
 }
