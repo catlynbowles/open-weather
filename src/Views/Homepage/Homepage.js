@@ -27,7 +27,6 @@ const Homepage = ({ cityCoordinates }) => {
 
   const generateWeatherCards = (weatherStatistics) => {
     return weatherStatistics.map(city => {
-      console.log(city)
       return (
         <WeatherCard
           id={city.id}
