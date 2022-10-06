@@ -44,7 +44,7 @@ const Homepage = ({ cityCoordinates }) => {
   return (
     <section>
       {cityDetails.length ? generateWeatherCards(cityDetails) : null}
-      {showModal && <CityDetail selectedCity={selectedCity} />}
+      {showModal && <CityDetail selectedCity={selectedCity} setShowModal={setShowModal}/>}
     </section>
   )
 }
