@@ -1,12 +1,12 @@
 import { useEffect } from "react"
 
-const WeatherCard = ({name, temp, icon, id}) => {
+const WeatherCard = ({name, temp, icon, handleUserSelect, id}) => {
   return (
     <div>
       <h3>{name}</h3>
       <p>{temp}</p>
       <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img><br></br>
-      <button>Details</button>
+      <button onClick={(e) => handleUserSelect(id, name, temp)}>Details</button>
     </div>
   )
 }

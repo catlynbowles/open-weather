@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react"
 import { getLocalWeather } from "../../apiCalls"
 import WeatherCard from "../../Components/WeatherCard/WeatherCard"
-import Header from "../../Components/Header/Header"
+import CityDetail from "../CityDetail/CityDetail"
 
 const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
+  const [showModal, setShowModal] = useState(false)
+  const [selectedCity, setSelectedCity] = useState('')
 
   useEffect(() => {
     Promise.all(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
@@ -12,22 +14,28 @@ const Homepage = ({ cityCoordinates }) => {
     console.log('itran')
   }, [cityCoordinates])
 
-  const findCityByCoordinates = (lat, lon) => {
-    let cityName = cityCoordinates.find(city => {
-      return city.lat.toFixed(4) == lat && city.lon.toFixed(4) == lon
-    })
-    return `${cityName.name}, ${cityName.state}`
+  const handleUserSelect = (id, name, temp) => {
+    console.log(id)
+    setShowModal(true)
+    setSelectedCity(cityDetails.find(city => city.id === id))
+  }
+
+  const findState = (name) => {
+    let cityLocation = cityCoordinates.find(city => city.name === name)
+    return `${cityLocation.state}`
   }
 
   const generateWeatherCards = (weatherStatistics) => {
     return weatherStatistics.map(city => {
+      console.log(city)
       return (
         <WeatherCard
           id={city.id}
           key={city.id}
-          name={findCityByCoordinates(city.coord.lat, city.coord.lon)}
+          name={`${city.name}, ${findState(city.name)}`}
           temp={city.main.temp}
           icon={city.weather[0].icon}
+          handleUserSelect={handleUserSelect}
         />
       )
     })
@@ -35,8 +43,8 @@ const Homepage = ({ cityCoordinates }) => {
 
   return (
     <section>
-      <Header />
       {cityDetails.length ? generateWeatherCards(cityDetails) : null}
+      {showModal && <CityDetail selectedCity={selectedCity} />}
     </section>
   )
 }
