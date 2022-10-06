@@ -12,6 +12,7 @@ const CityDetail = ({selectedCity, setShowModal}) => {
       temp={selectedCity.main.temp}
       humidity={selectedCity.main.humidity}
       pressure={selectedCity.main.pressure}
+      visibility={selectedCity.visibility}
       key={selectedCity.id}
       id={selectedCity.id}
       name={selectedCity.name}
