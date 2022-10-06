@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react"
 import { getLocalWeather } from "../../apiCalls"
 import WeatherCard from "../WeatherCard/WeatherCard"
+import Header from "../Header/Header"
 
-const WeatherGrid = ({ cityCoordinates }) => {
+const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
 
   useEffect(() => {
@@ -20,12 +21,11 @@ const WeatherGrid = ({ cityCoordinates }) => {
 
   const generateWeatherCards = (weatherStatistics) => {
     return weatherStatistics.map(city => {
-      console.log(city.coord.lat, '34')
       return (
         <WeatherCard
           id={city.id}
           key={city.id}
-          name={(findCityByCoordinates(city.coord.lat, city.coord.lon))}
+          name={findCityByCoordinates(city.coord.lat, city.coord.lon)}
           temp={city.main.temp}
           icon={city.weather[0].icon}
         />
@@ -34,8 +34,11 @@ const WeatherGrid = ({ cityCoordinates }) => {
   }
 
   return (
-    <div>{cityDetails.length ? generateWeatherCards(cityDetails) : null}</div>
+    <section>
+      <Header />
+      {cityDetails.length ? generateWeatherCards(cityDetails) : null}
+    </section>
   )
 }
 
-export default WeatherGrid
+export default Homepage

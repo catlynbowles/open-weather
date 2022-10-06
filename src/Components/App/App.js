@@ -1,20 +1,19 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import { getCityCoordinates } from '../../apiCalls';
-import WeatherGrid from '../WeatherGrid/WeatherGrid';
+import { getCityCoordinate } from '../../apiCalls';
+import Homepage from '../Homepage/Homepage';
 
 function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
 
   useEffect(() => {
-    Promise.all([getCityCoordinates('Las Vegas', 'Nevada'), getCityCoordinates('El Paso', 'Texas'), getCityCoordinates('Tucson', 'AZ')])
+    Promise.all([getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('El Paso', 'Texas'), getCityCoordinate('Tucson', 'AZ')])
       .then(data => setCityCoordinates(data.flat(1)))
   }, [])
 
   return (
     <div className="App">
-      Open Weathers
-      <WeatherGrid cityCoordinates={cityCoordinates} />
+      <Homepage cityCoordinates={cityCoordinates}/>
     </div>
   );
 }

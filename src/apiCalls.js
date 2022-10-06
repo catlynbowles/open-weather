@@ -1,4 +1,4 @@
-export const getCityCoordinates = (city, state) => {
+export const getCityCoordinate = (city, state) => {
   return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
     .then(response => returnResponse(response))
 }
