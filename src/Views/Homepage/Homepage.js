@@ -27,7 +27,7 @@ const Homepage = ({ cityCoordinates }) => {
 
   const findState = (name) => {
     let cityLocation = cityCoordinates.find(city => city.name === name)
-    return `${cityLocation.state}`
+    return cityLocation && `${cityLocation.state}`
   }
 
   const generateWeatherCards = (weatherStatistics) => {
