@@ -1,0 +1,12 @@
+@import '../../Styles/variables.scss';
+
+header {
+  height: 5rem;
+  background-color: $teal;
+  color: $white;
+
+  h1 {
+    margin: 0;
+    padding: 1rem;
+  }
+}

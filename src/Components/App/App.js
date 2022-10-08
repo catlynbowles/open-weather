@@ -8,14 +8,14 @@ function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
 
   useEffect(() => {
-    Promise.all([getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('Houston', 'Texas'), getCityCoordinate('Phoenix', 'AZ')])
+    Promise.all([getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('Anchorage', 'Alaska'), getCityCoordinate('Honolulu', 'Hawaii'), getCityCoordinate('New York', 'New York'), getCityCoordinate('Los Angeles', 'California')])
       .then(data => setCityCoordinates(data.flat(1)))
   }, [])
 
   return (
     <div className="App">
       <Header />
-      <Homepage cityCoordinates={cityCoordinates}/>
+      <Homepage cityCoordinates={cityCoordinates} />
     </div>
   );
 }
