@@ -13,7 +13,7 @@ const WeatherCard = ({ name, temp, icon, handleUserSelect, id, description }) =>
         <img alt={description} src={`http://openweathermap.org/img/wn/${icon}.png`}></img><br></br>
       </div>
       <div className='card-bottom'>
-        <button className='details-button' onClick={(e) => handleUserSelect(id, name, temp)}>Details</button>
+        <button className='details-button' onClick={() => handleUserSelect(id)}>Details</button>
       </div>
     </article>
   )

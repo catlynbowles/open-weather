@@ -4,16 +4,18 @@ import WeatherCard from "../../Components/WeatherCard/WeatherCard"
 import CityDetail from "../CityDetail/CityDetail"
 import './Homepage.scss'
 import Loading from "../../Components/Loading/Loading"
+import Error from "../../Components/Error/Error"
 
 const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
+  const [error, setError] = useState('')
 
   useEffect(() => {
     Promise.all(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
       .then(data => setCityDetails(data))
-    console.log('itran')
+      .catch(error => setError(error))
   }, [cityCoordinates])
 
   const handleUserSelect = (id) => {
@@ -27,7 +29,7 @@ const Homepage = ({ cityCoordinates }) => {
 
   const findState = (name) => {
     let cityLocation = cityCoordinates.find(city => city.name === name)
-    return cityLocation && `${cityLocation.state}`
+    return `${cityLocation.state}`
   }
 
   const generateWeatherCards = (weatherStatistics) => {
@@ -49,9 +51,9 @@ const Homepage = ({ cityCoordinates }) => {
   return (
     <section>
       <div className='card-display'>
-        {cityDetails.length ? generateWeatherCards(cityDetails) : <Loading />}
+        {error ? <Error error={error} /> : !cityDetails.length ? <Loading /> : generateWeatherCards(cityDetails)}
+        {showModal && <CityDetail selectedCity={selectedCity} handleClose={handleClose} />}
       </div>
-      {showModal && <CityDetail selectedCity={selectedCity} handleClose={handleClose} />}
     </section>
   )
 }
