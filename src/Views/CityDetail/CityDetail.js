@@ -21,6 +21,7 @@ const CityDetail = ({ selectedCity, setShowModal }) => {
         id={selectedCity.id}
         name={selectedCity.name}
         setShowModal={setShowModal}
+        icon={selectedCity.weather[0].icon}
       />
     </div>
   )
