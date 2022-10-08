@@ -1,8 +1,11 @@
+@import './Styles/variables.scss';
+
 body {
   margin: 0;
   font-family: 'Inconsolata', monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: $charcoal;
 }
 
 code {
