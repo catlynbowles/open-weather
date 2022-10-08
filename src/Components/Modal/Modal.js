@@ -1,7 +1,8 @@
+import './Modal.scss'
 
-const Modal = ({description, temp, humidity, pressure, id, name, setShowModal, visibility, feelsLike, tempMin, tempMax}) => {
+const Modal = ({ description, temp, humidity, pressure, id, name, setShowModal, visibility, feelsLike, tempMin, tempMax }) => {
   return (
-    <div>
+    <section className='modal-body'>
       <div>
         {name}
         <p>{description}</p>
@@ -18,7 +19,7 @@ const Modal = ({description, temp, humidity, pressure, id, name, setShowModal, v
         <p>Visibility: {visibility.toLocaleString()} m</p>
       </div>
       <button onClick={() => setShowModal(false)}>Close</button>
-    </div>
+    </section>
   )
 }
 
