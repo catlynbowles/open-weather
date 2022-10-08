@@ -1,6 +1,5 @@
 import './Modal.scss'
 import InfoBox from '../../InfoBox/InfoBox';
-import Subline from '../Subline/Subline';
 
 const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset, rain, snow }) => {
   const formatDate = (seconds) => {
@@ -22,7 +21,7 @@ const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, v
         <h2>{name}</h2>
       </div>
       <div className='sub-header'>
-        <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
+        <img alt={description} src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
         {generateInfoBox(description, [{ description: 'Sunrise & Sunset', measure: `${formatDate(sunrise)} - ${formatDate(sunset)}` },
         { description: 'Cloud Coverage', measure: `${cloudCover}%` },
         { description: 'Wind', measure: `${wind} mph` }

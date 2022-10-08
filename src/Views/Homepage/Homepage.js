@@ -39,6 +39,7 @@ const Homepage = ({ cityCoordinates }) => {
           name={`${city.name}, ${findState(city.name)}`}
           temp={city.main.temp}
           icon={city.weather[0].icon}
+          description={city.weather[0].description}
           handleUserSelect={handleUserSelect}
         />
       )
