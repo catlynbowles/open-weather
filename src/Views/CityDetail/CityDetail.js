@@ -1,7 +1,7 @@
 import './CityDetail.scss'
 import Modal from "../../Components/Modal/Modal"
 
-const CityDetail = ({ selectedCity, setShowModal }) => {
+const CityDetail = ({ selectedCity, handleClose }) => {
   const capitalizeFirstLetter = (string) => {
     return string.split(' ').map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)} `)
   }
@@ -17,10 +17,17 @@ const CityDetail = ({ selectedCity, setShowModal }) => {
         humidity={selectedCity.main.humidity}
         pressure={selectedCity.main.pressure}
         visibility={selectedCity.visibility}
+        cloudCover={selectedCity.clouds.all}
+        rain={selectedCity.rain}
+        snow={selectedCity.snow}
+        wind={selectedCity.wind.speed}
         key={selectedCity.id}
         id={selectedCity.id}
         name={selectedCity.name}
-        setShowModal={setShowModal}
+        handleClose={handleClose}
+        icon={selectedCity.weather[0].icon}
+        sunrise={selectedCity.sys.sunrise}
+        sunset={selectedCity.sys.sunset}
       />
     </div>
   )

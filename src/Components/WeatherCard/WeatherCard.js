@@ -2,7 +2,6 @@ import './WeatherCard.scss'
 
 const WeatherCard = ({ name, temp, icon, handleUserSelect, id }) => {
   const splitName = name.split(',')
-  console.log(splitName)
 
   return (
     <article className='weather-card'>

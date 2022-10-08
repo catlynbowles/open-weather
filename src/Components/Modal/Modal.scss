@@ -1,11 +1,70 @@
-// @import '../../Styles/variables.scss';
+@import '../../Styles/variables.scss';
 
 .modal-body {
   position: fixed;
-  background: white;
+  background: $off-white;
   width: 80%;
   height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  border: 3px solid black;
+
+  .info-box {
+    display: none;
+  }
+
+  img {
+    margin: 0;
+    padding: 0;
+  }
+
+  .sub-header {
+    border-bottom: 3px solid $charcoal;
+  }
+
+  .modal-header {
+    background-color: $charcoal;
+    color: white;
+    border-bottom: 3px solid black;
+    width: 100%; 
+    
+    h2 {
+      margin: 0;
+      padding: 1rem;
+    }
+  }
+
+  button {
+    margin: 1rem;
+    cursor: pointer;
+  }
+
+  .stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    div {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      width: 80%;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-body {
+    width: 50%;
+
+    .stats-container {
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-shrink: 0;
+      div {
+        width: 40%;
+      }
+    }
+  }
 }

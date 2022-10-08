@@ -8,7 +8,7 @@ function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
 
   useEffect(() => {
-    Promise.all([getCityCoordinate('Honolulu', 'Hawaii'), getCityCoordinate('New York', 'New York'), getCityCoordinate('Houston', 'Texas'), getCityCoordinate('New Orleans', 'Louisiana'), getCityCoordinate('Miami', 'Florida')])
+    Promise.all([getCityCoordinate('Honolulu', 'Hawaii'), getCityCoordinate('New York', 'New York'), getCityCoordinate('Houston', 'Texas'), getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('Miami', 'Florida')])
       .then(data => setCityCoordinates(data.flat(1)))
   }, [])
 
