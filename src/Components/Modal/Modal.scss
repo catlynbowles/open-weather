@@ -1,6 +1,10 @@
 @import '../../Styles/variables.scss';
 
 .modal-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   position: fixed;
   background: white;
   width: 80%;
@@ -9,10 +13,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 3px solid black;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  .info-box {
+    display: none;
+  }
   
   img {
     height: 5rem;
@@ -53,7 +57,11 @@
 
 @media (min-width: 768px) {
   .modal-body {
-    width: 50%;
+    width: 40%;
+
+    .info-box {
+      display: block;
+    }
     .stats-container {
       flex-direction: row;
       justify-content: center;

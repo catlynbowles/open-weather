@@ -9,8 +9,8 @@ const Modal = ({ description, temp, humidity, pressure, id, name, setShowModal, 
       <div className='sub-header'>
         <h3>{description}</h3>
         <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
-        <p><em>Cloud Cover</em><br /> {cloudCover}%</p>
-          <p><em>Wind</em><br /> {wind} mph</p>
+        <p><em>Cloud Coverage</em><br /> {cloudCover}%</p>
+        <p><em>Wind</em><br /> {wind} mph</p>
       </div>
       <div className='stats-container'>
         <div className='temp-box'>
@@ -26,6 +26,12 @@ const Modal = ({ description, temp, humidity, pressure, id, name, setShowModal, 
           <p><em>Visibility</em><br /> {visibility.toLocaleString()} m</p>
         </div>
       </div>
+        {/* <div className='info-box'>
+          <h3>Did you know?</h3>
+          <h4>A class 5 hurricane would have:</h4>
+          <p>Winds up to 157 mph, {157 - wind} units higher than present</p>
+          <p>Pressure as low as 920 hPa, {pressure - 920} units lower than present</p>
+        </div> */}
       <button onClick={() => setShowModal(false)}>Close</button>
     </section>
   )
