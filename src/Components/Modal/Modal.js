@@ -1,6 +1,10 @@
 import './Modal.scss'
 
-const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind }) => {
+const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset }) => {
+  const formatDate = (seconds) => {
+    return new Date(seconds * 1000).toLocaleTimeString();
+  }
+
   return (
     <section className='modal-body'>
       <div className='modal-header'>
@@ -8,6 +12,7 @@ const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, v
       </div>
       <div className='sub-header'>
         <h3>{description}</h3>
+        <p><em>Sunrise & Sunset</em><br />{formatDate(sunrise)} - {formatDate(sunset)}</p>
         <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
         <p><em>Cloud Coverage</em><br /> {cloudCover}%</p>
         <p><em>Wind</em><br /> {wind} mph</p>
