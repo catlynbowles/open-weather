@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { getLocalWeather } from "../../apiCalls"
 import WeatherCard from "../../Components/WeatherCard/WeatherCard"
 import CityDetail from "../CityDetail/CityDetail"
+import './Homepage.scss'
 
 const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
@@ -42,7 +43,9 @@ const Homepage = ({ cityCoordinates }) => {
 
   return (
     <section>
-      {cityDetails.length ? generateWeatherCards(cityDetails) : null}
+      <div className='card-display'>
+        {cityDetails.length ? generateWeatherCards(cityDetails) : null}
+      </div>
       {showModal && <CityDetail selectedCity={selectedCity} setShowModal={setShowModal}/>}
     </section>
   )

@@ -1,7 +1,10 @@
+import './Header.scss'
 
 const Header = () => {
   return (
-    <header>Climate Tracker</header>
+    <header>
+      <h1>Climate Tracker</h1>
+    </header>
   )
 }
 

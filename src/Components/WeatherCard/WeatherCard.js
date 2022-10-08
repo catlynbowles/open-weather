@@ -1,13 +1,23 @@
-import { useEffect } from "react"
+import './WeatherCard.scss'
 
-const WeatherCard = ({name, temp, icon, handleUserSelect, id}) => {
+const WeatherCard = ({ name, temp, icon, handleUserSelect, id }) => {
+  const splitName = name.split(',')
+  console.log(splitName)
+
   return (
-    <div>
-      <h3>{name}</h3>
-      <p>{temp}°F</p>
-      <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img><br></br>
-      <button onClick={(e) => handleUserSelect(id, name, temp)}>Details</button>
-    </div>
+    <article className='weather-card'>
+      <div className='city-name'>
+        <h3>{splitName[0]},</h3>
+        <h3>{splitName[1]}</h3>
+      </div>
+      <div className='temp-center'>
+        <p className='temp'>{temp} °F</p>
+        <img src={`http://openweathermap.org/img/wn/${icon}.png`}></img><br></br>
+      </div>
+      <div className='card-bottom'>
+        <button className='details-button' onClick={(e) => handleUserSelect(id, name, temp)}>Details</button>
+      </div>
+    </article>
   )
 }
 
