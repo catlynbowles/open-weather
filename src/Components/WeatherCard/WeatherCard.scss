@@ -5,9 +5,10 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  flex-shrink: 0;
   background-color: $off-white;
   border: 3px solid black;
-  width: 50%;
+  width: 200px;
   height: auto;
   margin: 2rem;
 
@@ -55,3 +56,5 @@
   }
 
 }
+
+@media (min-width: 768px) {}
