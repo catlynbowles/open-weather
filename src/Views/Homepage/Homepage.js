@@ -15,8 +15,7 @@ const Homepage = ({ cityCoordinates }) => {
     console.log('itran')
   }, [cityCoordinates])
 
-  const handleUserSelect = (id, name, temp) => {
-    console.log(id)
+  const handleUserSelect = (id) => {
     setShowModal(true)
     setSelectedCity(cityDetails.find(city => city.id === id))
   }

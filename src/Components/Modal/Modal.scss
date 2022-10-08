@@ -9,11 +9,27 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   
+  img {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .sub-header {
+    width: 40%;
+    border-bottom: 2px solid $charcoal;
+  }
+
   .modal-header {
-    background-color: $teal;
+    background-color: $charcoal;
     color: white;
     border-bottom: 3px solid black;
+    width: 100%; 
+    
     h2 {
       margin: 0;
       padding: 1rem;
@@ -22,11 +38,16 @@
 
   button {
     margin: 1rem;
+    cursor: pointer;
   }
 
   .stats-container {
     display: flex;
     flex-direction: column;
+
+    div {
+      border-bottom: 2px solid black;
+    }
   }
 }
 
@@ -39,6 +60,7 @@
 
       div {
         margin: 3rem;
+        border-bottom: 2px solid black;
       }
     }
   }
