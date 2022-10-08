@@ -5,7 +5,7 @@ const CityDetail = ({ selectedCity, handleClose }) => {
   const capitalizeFirstLetter = (string) => {
     return string.split(' ').map(word => `${word.charAt(0).toUpperCase()}${word.slice(1)} `)
   }
-  
+
   return (
     <div className='modal'>
       <Modal
@@ -18,6 +18,8 @@ const CityDetail = ({ selectedCity, handleClose }) => {
         pressure={selectedCity.main.pressure}
         visibility={selectedCity.visibility}
         cloudCover={selectedCity.clouds.all}
+        rain={selectedCity.rain}
+        snow={selectedCity.snow}
         wind={selectedCity.wind.speed}
         key={selectedCity.id}
         id={selectedCity.id}
