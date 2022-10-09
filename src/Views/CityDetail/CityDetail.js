@@ -9,6 +9,8 @@ const CityDetail = ({ selectedCity, handleClose }) => {
   return (
     <div className='modal'>
       <Modal
+        id={selectedCity.id}
+        name={selectedCity.name}
         description={capitalizeFirstLetter(selectedCity.weather[0].description)}
         temp={selectedCity.main.temp}
         feelsLike={selectedCity.main.feels_like}
@@ -21,9 +23,6 @@ const CityDetail = ({ selectedCity, handleClose }) => {
         rain={selectedCity.rain}
         snow={selectedCity.snow}
         wind={selectedCity.wind.speed}
-        key={selectedCity.id}
-        id={selectedCity.id}
-        name={selectedCity.name}
         handleClose={handleClose}
         icon={selectedCity.weather[0].icon}
         sunrise={selectedCity.sys.sunrise}

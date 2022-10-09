@@ -2,7 +2,7 @@ import Subline from "../Components/Subline/Subline"
 
 const InfoBox = ({ caption, statistics }) => {
   const generateSublines = () => {
-    return statistics.map(stat => {
+    return statistics.length && statistics.map(stat => {
       return (
         <Subline
           description={stat.description}
@@ -13,10 +13,10 @@ const InfoBox = ({ caption, statistics }) => {
     })
   }
   return (
-    <>
-      <h3>{caption}</h3>
+    <div className={caption}>
+      <h3 tabIndex='0'>{caption}</h3>
       {generateSublines()}
-    </>
+    </div>
   )
 }
 
