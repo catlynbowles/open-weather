@@ -30,7 +30,7 @@ This is an application to display the most up-to-date weather statistics for a s
 - Upon clicking the 'Details' button, a modal pops up displaying additional weather details, such as pressure, visibility, humidity, and the weather conditions.
 - Additional statistics have been added to account for sunrise and sunset times, cloud coverage, wind, high and low temperatures, and 'feels like' temp.
 - Elements are tabbable.
-- Site was designed with a mobile-first approach and fully responsive for any device. 
+- Site was designed with a mobile-first approach and is fully responsive for any device. 
 
 ### Future Features
 - A user can search for a city by name through a search bar. 
