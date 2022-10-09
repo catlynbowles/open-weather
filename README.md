@@ -22,7 +22,7 @@ This is an application to display the most up-to-date weather statistics for a s
 
 ### Planning 
 - Wireframe was created using [Figma](https://www.figma.com/file/aNJ701xPL8oHbxtqygAHis/Weather-Planning?node-id=0%3A1)
-- Data structure / mapping through [Excalidraw](https://www.figma.com/file/aNJ701xPL8oHbxtqygAHis/Weather-Planning?node-id=0%3A1)
+- Data structure / mapping through [Excalidraw](https://excalidraw.com/#json=kwZkCbzC9Y_QqIFM1KWb2,ulkXkLwSg47VcLfi48EvZw)
 - Organization through [Github projects](https://github.com/users/catlynbowles/projects/2)
 
 ### Features
