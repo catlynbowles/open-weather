@@ -15,7 +15,7 @@ const Homepage = ({ cityCoordinates }) => {
   useEffect(() => {
     Promise.all(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
       .then(data => setCityDetails(data))
-      .catch(error => setError(error))
+      .catch(error => setError(`${error}`))
   }, [cityCoordinates])
 
   const handleUserSelect = (id) => {
@@ -28,7 +28,7 @@ const Homepage = ({ cityCoordinates }) => {
   }
 
   const findState = (name) => {
-    console.log(cityDetails)
+    // console.log(cityDetails)
     let cityLocation = cityCoordinates.find(city => city.name === name)
     return `${cityLocation.state}`
   }

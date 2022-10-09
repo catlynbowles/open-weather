@@ -11,8 +11,9 @@ function App() {
 
   useEffect(() => {
     Promise.all([getCityCoordinate('Honolulu', 'Hawaii'), getCityCoordinate('New York', 'New York'), getCityCoordinate('Houston', 'Texas'), getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('Miami', 'Florida')])
+      // Promise.all([getCityCoordinate('Honolulu', 'Hawaii')])
       .then(data => setCityCoordinates(data.flat(1)))
-      .catch(err => setError(err))
+      .catch(err => setError(`${err}`))
   }, [])
 
   return (
