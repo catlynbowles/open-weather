@@ -19,7 +19,7 @@ const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, v
         <InfoBox caption={`Today's Temperatures`} statistics={[{ description: 'Currently', measure: `${temp} °F` }, { description: 'Feels Like', measure: `${feelsLike} °F` }, { description: 'Range', measure: `${tempMin} °F - ${tempMax} °F` }]} />
         <InfoBox caption={`Additional Factors`} statistics={[{ description: 'Humidity', measure: `${humidity}%` }, { description: 'Pressure', measure: `${pressure.toLocaleString()} hPa` }, { description: 'Visibility', measure: `${visibility.toLocaleString()} m` }]} />
       </div>
-      <button onClick={() => handleClose()}>Close</button>
+      <button className='close' onClick={() => handleClose()}>Close</button>
     </section>
   )
 }

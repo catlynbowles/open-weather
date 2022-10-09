@@ -1,7 +1,6 @@
-describe('empty spec', () => {
+describe('Homepage', () => {
   beforeEach(() => {
     const key = Cypress.env('api_key')
-    console.log(key)
     cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Honolulu,Hawaii,US&limit=1&appid=${key}`, { fixture: "hawaii" })
     cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=New%20York,New%20York,US&limit=1&appid=${key}`, { fixture: "newYork" })
     cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Houston,Texas,US&limit=1&appid=${key}`, { fixture: "houston" })
@@ -12,12 +11,47 @@ describe('empty spec', () => {
     cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=36.1672559&lon=-115.148516&appid=${key}`, { fixture: "lasVegasWeather" })
     cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=29.7589382&lon=-95.3676974&appid=${key}`, { fixture: "houstonWeather" })
     cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=25.7741728&lon=-80.19362&appid=${key}`, { fixture: "miamiWeather" })
-
-    // cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=21.304547&lon=-157.855676&appid=fb105774118349bb868f2a8136fc3844`, { fixture: "localWeather" })
     cy.visit('http://localhost:3000/')
   })
-  it('passes', () => {
+
+  it('Should have a display of weather cards, with a city name, temperature, picture and details button', () => {
     cy.wait(3000)
-    cy.get('.weather-card')
+    cy.get('.weather-card').should('have.length', 5)
+    cy.get('img').should('have.length', 5)
+    cy.get('button').should('have.length', 5)
+
+    cy.get('.city-name').first().should('contain.text', 'Honolulu,  Hawaii')
+    cy.get('.temp').first().should('contain.text', '29.48 °F')
+    cy.get('.card-bottom').first().should('contain.text', 'Details')
+  })
+
+  it('Should allow a user to click on a details button to view a modal, which has weather details about the selected city', () => {
+    cy.get('.card-bottom').first().should('contain.text', 'Details').click()
+
+    cy.get('.modal-header')
+      .children()
+      .should('contain', 'Honolulu')
+
+    cy.get('h3')
+      .should('contain', 'Moderate Rain')
+      .and('contain', 'Additional Factors')
+      .and('contain', 'Today\'s Temperatures')
+
+    cy.get('p')
+      .should('contain', 'Sunrise & Sunset')
+      .and('contain', 'Cloud Coverage')
+      .and('contain', 'Wind')
+
+    cy.get('p')
+      .should('contain', 'Sunrise & Sunset')
+      .and('contain', 'Cloud Coverage')
+      .and('contain', 'Wind')
+  })
+
+  it('Should allow a user to exit out of the modal', () => {
+    cy.get('.card-bottom').first().should('contain.text', 'Details').click()
+
+    cy.get('.close').click()
+    cy.get('.weather-card').should('be.visible')
   })
 })
