@@ -54,4 +54,28 @@ describe('Homepage', () => {
     cy.get('.close').click()
     cy.get('.weather-card').should('be.visible')
   })
+
+  it('Should be able to communicate to the user when the city data cannot be fetched', () => {
+    const key = Cypress.env('api_key')
+    cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Honolulu,Hawaii,US&limit=1&appid=${key}`, {
+        statusCode: 400,
+      })
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+  });
+
+  it('Should be able to communicate to the user when the local weather data cannot be fetched', () => {
+    const key = Cypress.env('api_key')
+    cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Miami,Florida,US&limit=1&appid=${key}`, {
+        statusCode: 400,
+      })
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+  });
+
+  it('Should be able to communicate to the user when there is a server error', () => {
+    const key = Cypress.env('api_key')
+    cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Honolulu,Hawaii,US&limit=1&appid=${key}`, {
+        statusCode: 500,
+      })
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+  });
 })
