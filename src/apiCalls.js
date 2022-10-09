@@ -10,8 +10,8 @@ export const getLocalWeather = (lat, lon) => {
 
 const returnResponse = (response) => {
   if (response.ok) {
-      return response.json()
+    return response.json()
   } else {
-      throw new Error('Error')
+    throw new Error('Error')
   }
 }

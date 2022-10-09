@@ -18,10 +18,10 @@ const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, v
   return (
     <section className='modal-body'>
       <div className='modal-header'>
-        <h2>{name}</h2>
+        <h2 tabIndex='0'>{name}</h2>
       </div>
       <div className='sub-header'>
-        <img alt={description} src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
+        <img tabIndex='0' alt={description} src={`http://openweathermap.org/img/wn/${icon}.png`}></img>
         {generateInfoBox(description, [{ description: 'Sunrise & Sunset', measure: `${formatDate(sunrise)} - ${formatDate(sunset)}` },
         { description: 'Cloud Coverage', measure: `${cloudCover}%` },
         { description: 'Wind', measure: `${wind} mph` }

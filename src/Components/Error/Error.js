@@ -1,7 +1,7 @@
 
 const Error = ({error}) => {
   return (
-    <h3>Error: {error}</h3>
+    <h3 tabIndex='0'>Error: {error}</h3>
   )
 }
 
