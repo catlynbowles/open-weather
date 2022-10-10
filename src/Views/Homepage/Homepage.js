@@ -28,7 +28,6 @@ const Homepage = ({ cityCoordinates }) => {
   }
 
   const findState = (name) => {
-    // console.log(cityDetails)
     let cityLocation = cityCoordinates.find(city => city.name === name)
     return `${cityLocation.state}`
   }

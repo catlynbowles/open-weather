@@ -1,7 +1,7 @@
 import './Modal.scss'
-import InfoBox from '../../InfoBox/InfoBox';
+import InfoBox from '../InfoBox/InfoBox';
 
-const Modal = ({ description, temp, humidity, pressure, id, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset, rain, snow }) => {
+const Modal = ({ description, temp, humidity, pressure, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset}) => {
   const formatDate = (seconds) => {
     return new Date(seconds * 1000).toLocaleTimeString();
   }
