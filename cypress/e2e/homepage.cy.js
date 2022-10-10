@@ -55,7 +55,7 @@ describe('Homepage', () => {
     cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Honolulu,Hawaii,US&limit=1&appid=${key}`, {
         statusCode: 400,
       })
-      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later.`)
   });
 
   it('Should be able to communicate to the user when the local weather data cannot be fetched', () => {
@@ -63,7 +63,7 @@ describe('Homepage', () => {
     cy.intercept('GET', `https://api.openweathermap.org/data/2.5/weather?units=imperial&lat=21.304547&lon=-157.855676&appid=${key}`, {
         statusCode: 400,
       })
-      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later.`)
   });
 
   it('Should be able to communicate to the user when there is a server error', () => {
@@ -71,6 +71,6 @@ describe('Homepage', () => {
     cy.intercept('GET', `https://api.openweathermap.org/geo/1.0/direct?q=Honolulu,Hawaii,US&limit=1&appid=${key}`, {
         statusCode: 500,
       })
-      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later or refresh the page.`)
+      cy.get('.error').should('contain.text', `Oops, there's been an error! Try again later.`)
   });
 })
