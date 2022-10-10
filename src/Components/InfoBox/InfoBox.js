@@ -1,4 +1,4 @@
-import Subline from "../Components/Subline/Subline"
+import Subline from "../Subline/Subline"
 
 const InfoBox = ({ caption, statistics }) => {
   const generateSublines = () => {

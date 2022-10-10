@@ -49,6 +49,10 @@
       all: unset;
       cursor: pointer;
     }
+
+    .details-button:focus {
+      outline: 2px solid white;
+    }
   }
 
   .temp-center {
