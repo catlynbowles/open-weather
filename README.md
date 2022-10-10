@@ -5,12 +5,12 @@ https://user-images.githubusercontent.com/98493391/194775299-551fe1e5-0b26-43aa-
 
 
 ## Table of Contents
-- [Introduction](#introduction)
-- [Planning](#planning)
-- [Features](#features)
-- [Future Features](#future-features)
-- [Technologies](#technologies)
-- [Contributor](#contributors)
+- Introduction
+- Planning
+- Features
+- Future Features
+- Technologies
+- Contributor
 
 ### Introduction
 This is an application to display the most up-to-date weather statistics for a selection of 5 citites. 
@@ -38,6 +38,7 @@ This is an application to display the most up-to-date weather statistics for a s
 
 ### Technologies
 - React
+- SASS
 - Cypress
 - CodeSandbox
 - Github
