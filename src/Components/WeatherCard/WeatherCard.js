@@ -6,7 +6,7 @@ const WeatherCard = ({ name, temp, icon, handleUserSelect, id, description }) =>
   return (
     <article className='weather-card'>
       <div className='city-name'>
-        <h2 tabIndex='0'>{splitName[0]}, <br />{splitName[1]}</h2>
+        <h2 tabIndex='0'>{splitName[0]} <br />{splitName[1]}</h2>
       </div>
       <div className='temp-center'>
         <p className='temp' tabIndex='0'>{temp} °F</p>
