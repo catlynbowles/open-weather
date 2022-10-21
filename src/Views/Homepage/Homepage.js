@@ -27,9 +27,15 @@ const Homepage = ({ cityCoordinates }) => {
     setShowModal(false)
   }
 
-  const findState = (name) => {
-    let cityLocation = cityCoordinates.find(city => city.name === name)
-    return `${cityLocation.state}`
+  // const findState = (name) => {
+  //   let cityLocation = cityCoordinates.find(city => city.name.includes(name))
+  //   // let cityLocation = cityCoordinates.find(city => city.name === name)
+  //   return `${cityLocation.state}`
+  // }
+
+  const findState = (lat, lon) => {
+      let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
+      return cityLocation ? `${cityLocation.state}` : ''
   }
 
   const generateWeatherCards = (weatherStatistics) => {
@@ -38,7 +44,7 @@ const Homepage = ({ cityCoordinates }) => {
         <WeatherCard
           id={city.id}
           key={city.id}
-          name={`${city.name}, ${findState(city.name)}`}
+          name={`${city.name}, ${findState(city.coord.lat, city.coord.lon) && findState(city.coord.lat, city.coord.lon)}`}
           temp={city.main.temp}
           icon={city.weather[0].icon}
           description={city.weather[0].description}
