@@ -34,7 +34,7 @@ const Homepage = ({ cityCoordinates }) => {
   // }
 
   const findState = (lat, lon) => {
-      let cityLocation = cityCoordinates.find(city => city.lat.toFixed(1) === lat.toFixed(1) && city.lon.toFixed(2) === lon.toFixed(2))
+      let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
       return cityLocation ? `${cityLocation.state}` : ''
   }
 
