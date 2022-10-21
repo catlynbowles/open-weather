@@ -30,7 +30,7 @@ const Homepage = ({ cityCoordinates }) => {
   // const findState = (name) => {
   //   let cityLocation = cityCoordinates.find(city => city.name.includes(name))
   //   // let cityLocation = cityCoordinates.find(city => city.name === name)
-  //   return cityLocation ? `${cityLocation.state}` : ''
+  //   return `${cityLocation.state}`
   // }
 
   const findState = (lat, lon) => {
