@@ -14,8 +14,9 @@ const Homepage = ({ cityCoordinates }) => {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    Promise.all(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
-      .then(data => setCityDetails(data))
+    Promise.allSettled(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
+      .then(data => setCityDetails(data.map(loc => loc.value)))
+      // .then(data => setCityDetails(data))
       .catch(error => setError(`${error}`))
   }, [cityCoordinates])
 
