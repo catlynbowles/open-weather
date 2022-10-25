@@ -10,13 +10,11 @@ const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
-  const inputRef = useRef(null)
   const [error, setError] = useState('')
 
   useEffect(() => {
     Promise.allSettled(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
       .then(data => setCityDetails(data.map(loc => loc.value)))
-      // .then(data => setCityDetails(data))
       .catch(error => setError(`${error}`))
   }, [cityCoordinates])
 
@@ -28,12 +26,6 @@ const Homepage = ({ cityCoordinates }) => {
   const handleClose = () => {
     setShowModal(false)
   }
-
-  // const findState = (name) => {
-  //   let cityLocation = cityCoordinates.find(city => city.name.includes(name))
-  //   // let cityLocation = cityCoordinates.find(city => city.name === name)
-  //   return `${cityLocation.state}`
-  // }
 
   const findState = (lat, lon) => {
     let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
@@ -60,7 +52,7 @@ const Homepage = ({ cityCoordinates }) => {
     <section>
       <div className='card-display'>
         {error ? <Error error={error} /> : !cityDetails.length ? <Loading /> : generateWeatherCards(cityDetails)}
-        {showModal && <CityDetail ref={inputRef} selectedCity={selectedCity} handleClose={handleClose} />}
+        {showModal && <CityDetail selectedCity={selectedCity} handleClose={handleClose} />}
       </div>
     </section>
   )
