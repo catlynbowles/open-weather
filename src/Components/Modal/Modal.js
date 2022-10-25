@@ -8,6 +8,7 @@ const Modal = ({ description, temp, humidity, pressure, name, handleClose, visib
   useEffect(() => {
     inputRef.current.focus()
   }, [])
+  
   const formatDate = (seconds) => {
     return new Date(seconds * 1000).toLocaleTimeString();
   }

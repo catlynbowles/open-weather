@@ -1,6 +1,5 @@
 import './CityDetail.scss'
 import Modal from "../../Components/Modal/Modal"
-import { useEffect, useRef } from 'react'
 
 const CityDetail = ({ selectedCity, handleClose }) => {
   const capitalizeFirstLetter = (string) => {

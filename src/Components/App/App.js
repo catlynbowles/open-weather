@@ -9,15 +9,15 @@ function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
   const [error, setError] = useState('')
   const [locations] = useState([
-    { state: 'Honolulu', city: 'Hawaii' },
-    { state: 'New York', city: 'New York' },
-    { state: 'Las Vegas', city: 'Nevada' },
-    { state: 'Anchorage', city: 'Alaska' },
-    { state: 'Portland', city: 'Oregon' }
+    { city: 'Honolulu', state: 'Hawaii' },
+    { city: 'New York', state: 'New York' },
+    { city: 'Las Vegas', state: 'Nevada' },
+    { city: 'Anchorage', state: 'Alaska' },
+    { city: 'Portland', state: 'Oregon' }
   ])
 
   useEffect(() => {
-    Promise.allSettled(locations.map(loc => getCityCoordinate(loc.state, loc.city)))
+    Promise.allSettled(locations.map(loc => getCityCoordinate(loc.city, loc.state)))
       .then(data => setCityCoordinates(data.map(loc => loc.value).flat(1)))
       .catch(err => setError(err))
   }, [])
