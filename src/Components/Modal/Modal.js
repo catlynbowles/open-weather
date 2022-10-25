@@ -1,14 +1,14 @@
 import './Modal.scss'
 import InfoBox from '../InfoBox/InfoBox';
 
-const Modal = ({ description, temp, humidity, pressure, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset}) => {
+const Modal = ({ inputRef, description, temp, humidity, pressure, name, handleClose, visibility, feelsLike, tempMin, tempMax, icon, cloudCover, wind, sunrise, sunset}) => {
   const formatDate = (seconds) => {
     return new Date(seconds * 1000).toLocaleTimeString();
   }
 
   return (
     <section className='modal-body'>
-      <div className='modal-header'>
+      <div className='modal-header' ref={inputRef}>
         <h2 tabIndex='0'>{name}</h2>
       </div>
       <div className='sub-header'>

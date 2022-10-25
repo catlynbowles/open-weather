@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { getLocalWeather } from "../../apiCalls"
 import WeatherCard from "../../Components/WeatherCard/WeatherCard"
 import CityDetail from "../CityDetail/CityDetail"
@@ -10,6 +10,7 @@ const Homepage = ({ cityCoordinates }) => {
   const [cityDetails, setCityDetails] = useState([])
   const [showModal, setShowModal] = useState(false)
   const [selectedCity, setSelectedCity] = useState('')
+  const inputRef = useRef(null)
   const [error, setError] = useState('')
 
   useEffect(() => {
@@ -34,8 +35,8 @@ const Homepage = ({ cityCoordinates }) => {
   // }
 
   const findState = (lat, lon) => {
-      let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
-      return cityLocation ? `${cityLocation.state}` : ''
+    let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
+    return cityLocation ? `${cityLocation.state}` : ''
   }
 
   const generateWeatherCards = (weatherStatistics) => {
@@ -58,7 +59,7 @@ const Homepage = ({ cityCoordinates }) => {
     <section>
       <div className='card-display'>
         {error ? <Error error={error} /> : !cityDetails.length ? <Loading /> : generateWeatherCards(cityDetails)}
-        {showModal && <CityDetail selectedCity={selectedCity} handleClose={handleClose} />}
+        {showModal && <CityDetail ref={inputRef} selectedCity={selectedCity} handleClose={handleClose} />}
       </div>
     </section>
   )
