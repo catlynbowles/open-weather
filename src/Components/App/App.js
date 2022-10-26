@@ -18,7 +18,7 @@ function App() {
 
   useEffect(() => {
     Promise.allSettled(locations.map(loc => getCityCoordinate(loc.city, loc.state)))
-      .then(data => setCityCoordinates(data.map(loc => loc.value).flat(1)))
+      .then(data => setCityCoordinates(data.filter(loc => loc.status === 'fulfilled').map(loc => loc.value).flat(1)))
       .catch(err => setError(err))
   }, [])
 

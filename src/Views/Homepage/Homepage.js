@@ -14,7 +14,7 @@ const Homepage = ({ cityCoordinates }) => {
 
   useEffect(() => {
     Promise.allSettled(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
-      .then(data => setCityDetails(data.map(loc => loc.value)))
+      .then(data => setCityDetails(data.filter(loc => loc.status === 'fulfilled').map(loc => loc.value)))
       .catch(error => setError(`${error}`))
   }, [cityCoordinates])
 

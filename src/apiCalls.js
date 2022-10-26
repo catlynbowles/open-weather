@@ -1,10 +1,6 @@
 export const getCityCoordinate = (city, state) => {
   return fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city},${state},US&limit=1&appid=${process.env.REACT_APP_API_KEY}`)
-    // .then(response => returnResponse(response.value))
-    .then(response => response.json())
-  // .then(data => console.log(data))
-  // .then(data => data)
-  // .then(data => console.log(data[0]))
+    .then(response => returnResponse(response))
 }
 
 export const getLocalWeather = (lat, lon) => {
