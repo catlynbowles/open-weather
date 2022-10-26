@@ -1,7 +1,7 @@
 
 const Subline = ({description, measure}) => {
   return (
-    <p tabIndex='0'><em>{description}</em><br />{measure}</p>
+    <p><em>{description}</em><br />{measure}</p>
   )
 }
 

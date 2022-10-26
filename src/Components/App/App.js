@@ -8,10 +8,17 @@ import Error from '../Error/Error';
 function App() {
   const [cityCoordinates, setCityCoordinates] = useState([])
   const [error, setError] = useState('')
+  const [locations] = useState([
+    { city: 'Honolulu', state: 'Hawaii' },
+    { city: 'New York', state: 'New York' },
+    { city: 'Las Vegas', state: 'Nevada' },
+    { city: 'Anchorage', state: 'Alaska' },
+    { city: 'Portland', state: 'Oregon' }
+  ])
 
   useEffect(() => {
-    Promise.all([getCityCoordinate('Honolulu', 'Hawaii'), getCityCoordinate('New York', 'New York'), getCityCoordinate('Portland', 'Oregon'), getCityCoordinate('Las Vegas', 'Nevada'), getCityCoordinate('Anchorage', 'Alaska')])
-      .then(data => setCityCoordinates(data.flat(1)))
+    Promise.allSettled(locations.map(loc => getCityCoordinate(loc.city, loc.state)))
+      .then(data => setCityCoordinates(data.filter(loc => loc.status === 'fulfilled').map(loc => loc.value).flat(1)))
       .catch(err => setError(err))
   }, [])
 

@@ -7,7 +7,7 @@ const CityDetail = ({ selectedCity, handleClose }) => {
   }
 
   return (
-    <div className='modal'>
+    <section className='modal'>
       <Modal
         id={selectedCity.id}
         name={selectedCity.name}
@@ -28,7 +28,7 @@ const CityDetail = ({ selectedCity, handleClose }) => {
         sunrise={selectedCity.sys.sunrise}
         sunset={selectedCity.sys.sunset}
       />
-    </div>
+    </section>
   )
 }
 

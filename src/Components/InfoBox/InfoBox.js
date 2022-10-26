@@ -14,7 +14,7 @@ const InfoBox = ({ caption, statistics }) => {
   }
   return (
     <div className={caption}>
-      <h3 tabIndex='0'>{caption}</h3>
+      <h3>{caption}</h3>
       {generateSublines()}
     </div>
   )

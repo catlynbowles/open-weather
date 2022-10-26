@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import { getLocalWeather } from "../../apiCalls"
 import WeatherCard from "../../Components/WeatherCard/WeatherCard"
 import CityDetail from "../CityDetail/CityDetail"
@@ -13,8 +13,8 @@ const Homepage = ({ cityCoordinates }) => {
   const [error, setError] = useState('')
 
   useEffect(() => {
-    Promise.all(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
-      .then(data => setCityDetails(data))
+    Promise.allSettled(cityCoordinates.map(city => getLocalWeather(city.lat, city.lon)))
+      .then(data => setCityDetails(data.filter(loc => loc.status === 'fulfilled').map(loc => loc.value)))
       .catch(error => setError(`${error}`))
   }, [cityCoordinates])
 
@@ -27,15 +27,9 @@ const Homepage = ({ cityCoordinates }) => {
     setShowModal(false)
   }
 
-  // const findState = (name) => {
-  //   let cityLocation = cityCoordinates.find(city => city.name.includes(name))
-  //   // let cityLocation = cityCoordinates.find(city => city.name === name)
-  //   return `${cityLocation.state}`
-  // }
-
   const findState = (lat, lon) => {
-      let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
-      return cityLocation ? `${cityLocation.state}` : ''
+    let cityLocation = cityCoordinates.find(city => city.lat.toFixed(2) === lat.toFixed(2) && city.lon.toFixed(2) === lon.toFixed(2))
+    return cityLocation ? `${cityLocation.state}` : ''
   }
 
   const generateWeatherCards = (weatherStatistics) => {
