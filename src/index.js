@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.scss";
-import Homepage from "./Components/Homepage/Homepage";
+import Homepage from "./Components/App/App";
 import reportWebVitals from "./reportWebVitals";
 import Header from "./Components/Header/Header";
 import { BrowserRouter } from "react-router-dom";

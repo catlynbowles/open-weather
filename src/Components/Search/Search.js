@@ -41,8 +41,8 @@ export default function Search() {
         />
       )}
       {selectedState && city && (
-        <Link to={"/results"}>
-        <button>hi</button>
+        <Link to={"/results"} state={{ city: city, state: selectedState }}>
+          <button>hi</button>
         </Link>
       )}
     </div>
