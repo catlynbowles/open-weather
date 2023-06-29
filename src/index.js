@@ -1,15 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.scss';
-import Homepage from './Components/Homepage/Homepage';
-import reportWebVitals from './reportWebVitals';
-import Header from './Components/Header/Header'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.scss";
+import Homepage from "./Components/Homepage/Homepage";
+import reportWebVitals from "./reportWebVitals";
+import Header from "./Components/Header/Header";
+import { BrowserRouter } from "react-router-dom";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <Header />
-    <Homepage />
+    <BrowserRouter>
+      <Header />
+      <Homepage />
+    </BrowserRouter>
   </React.StrictMode>
 );
 

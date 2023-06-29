@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 // import Dropdown from "../Dropdown/Dropdown";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
+import { Link } from "react-router-dom";
 
 export default function Search() {
   const [states, setStates] = useState([]);
   const [selectedState, setSelectedState] = useState();
-  const [cities, setCities] = useState([])
-  const [city, setCity] = useState('')
+  const [cities, setCities] = useState([]);
+  const [city, setCity] = useState("");
 
   useEffect(() => {
     fetch("http://localhost:3001/states/")
@@ -21,7 +22,7 @@ export default function Search() {
         .then((resp) => resp.json())
         .then((data) => setCities(data));
     }
-  }, [selectedState])
+  }, [selectedState]);
 
   return (
     <div>
@@ -31,8 +32,19 @@ export default function Search() {
         value={selectedState}
         placeholder="Select state"
       />
-      {cities.length && <Dropdown options={cities} onChange={(e) => setCity(e.value)} value={city} placeholder='Select city'/>}
-      {selectedState && city && <button>hi</button>}
+      {selectedState && (
+        <Dropdown
+          options={cities}
+          onChange={(e) => setCity(e.value)}
+          value={city}
+          placeholder="Select city"
+        />
+      )}
+      {selectedState && city && (
+        <Link to={"/results"}>
+        <button>hi</button>
+        </Link>
+      )}
     </div>
   );
 }
