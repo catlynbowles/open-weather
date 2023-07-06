@@ -1,11 +1,17 @@
-.App {
+.Results {
   text-align: center;
 }
 
-.App-header {
+.Results-header {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.link {
+  color: white;
+  font-weight: 700;
+  font-size: 3rem;
 }
