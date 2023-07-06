@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-// import Dropdown from "../Dropdown/Dropdown";
+import "./Search.scss";
 import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
 import { Link } from "react-router-dom";
@@ -25,7 +25,7 @@ export default function Search() {
   }, [selectedState]);
 
   return (
-    <div>
+    <div className="selection">
       <Dropdown
         options={states}
         onChange={(e) => setSelectedState(e.value)}
@@ -42,7 +42,7 @@ export default function Search() {
       )}
       {selectedState && city && (
         <Link to={"/results"} state={{ city: city, state: selectedState }}>
-          <button>hi</button>
+          <button>Find Weather Results!</button>
         </Link>
       )}
     </div>
