@@ -11,14 +11,14 @@ export default function Search() {
   const [city, setCity] = useState("");
 
   useEffect(() => {
-    fetch("http://localhost:3001/states/")
+    fetch("https://states-api-ydx9.vercel.app/states/")
       .then((resp) => resp.json())
       .then((data) => setStates(data));
   }, []);
 
   useEffect(() => {
     if (selectedState) {
-      fetch(`http://localhost:3001/states/${selectedState}`)
+      fetch(`https://states-api-ydx9.vercel.app/states/${selectedState}`)
         .then((resp) => resp.json())
         .then((data) => setCities(data));
     }
