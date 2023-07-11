@@ -5,13 +5,13 @@ import Homepage from "../../Views/Homepage/Homepage";
 import Error from "../Error/Error";
 import { useLocation, Link } from "react-router-dom";
 
-function Results() {
-  const location = useLocation();
-  const { city, state } = location.state;
-  console.log(city, state);
+function Results({ userLocations, clearUserLocations }) {
+  // const location = useLocation();
+  // const { city, state } = location.state;
+  // console.log(city, state);
   const [cityCoordinates, setCityCoordinates] = useState([]);
   const [error, setError] = useState("");
-  const [locations] = useState([{ city: city, state: state }]);
+  // const [locations] = useState(userLocations);
   // const [locations] = useState([
   //   { city: "Honolulu", state: "Hawaii" },
   //   { city: "New York", state: "New York" },
@@ -22,7 +22,7 @@ function Results() {
 
   useEffect(() => {
     Promise.allSettled(
-      locations.map((loc) => getCityCoordinate(loc.city, loc.state))
+      userLocations.map((loc) => getCityCoordinate(loc.city, loc.state))
     )
       .then((data) =>
         setCityCoordinates(
@@ -33,7 +33,7 @@ function Results() {
         )
       )
       .catch((err) => setError(err));
-  }, []);
+  }, [userLocations]);
 
   return (
     <div className="Results">
@@ -42,9 +42,9 @@ function Results() {
       ) : (
         <Homepage cityCoordinates={cityCoordinates} />
       )}
-      <Link to="/" style={{ textDecoration: "none" }} className="link">
-        Go Back
-      </Link>
+      <div onClick={clearUserLocations} className="link">
+        Clear Search
+      </div>
     </div>
   );
 }
