@@ -1,4 +1,4 @@
-@import '../../Styles/variables.scss';
+@import "../../Styles/variables.scss";
 
 .weather-card {
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
   flex-direction: column;
   flex-shrink: 0;
-  background-color: $off-white;
+  background-color: $teal;
   border: 3px solid black;
   width: 200px;
   height: auto;
@@ -19,10 +19,8 @@
 
   .city-name {
     font-size: 1.3rem;
-    background-color: $teal;
     color: $white;
     width: 100%;
-    border: 3px solid black;
 
     h3 {
       margin: 1rem;
@@ -58,6 +56,6 @@
   .temp-center {
     border: 3px solid black;
     width: 100%;
+    background-color: $off-white;
   }
-
 }
