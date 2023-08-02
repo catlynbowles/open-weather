@@ -13,7 +13,7 @@ const WeatherCard = ({
   return (
     <article className="weather-card">
       <h2 className="city-name">
-        {splitName[0]},jlsdjfikndikdjfoijsdoifjsskjfoisdjfoij <br />
+        {splitName[0]},<br />
         {splitName[1]}
       </h2>
       <div className="temp-center">

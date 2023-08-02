@@ -64,7 +64,10 @@ export default function Search() {
         // <Link to={"/results"} state={{ city: city, state: selectedState }}>
         //   <button>Find Weather Results!</button>
         // </Link>
-        <button onClick={() => displayCurrentResults()}>
+        <button onClick={() => {
+          setCity('')
+          setSelectedState('')
+          displayCurrentResults()}}>
           Find Weather Results!
         </button>
       )}
